@@ -1,0 +1,34 @@
+CREATE DATABASE IF NOT EXISTS `kc_icar`;
+USE `kc_icar`;
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+    `id` INT NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+    `openid` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '用户微信openId',
+    `avatar` VARCHAR(300) NOT NULL DEFAULT '' COMMENT '用户头像',
+    `nickname` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '用户昵称',
+    `status` TINYINT NOT NULL DEFAULT 0 COMMENT '用户状态：0未注册,1已注册,2已签到',
+    `mobile` VARCHAR(20) NOT NULL DEFAULT '' COMMENT '手机号',
+    `company` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '公司名称',
+    `brand_id` INT NOT NULL DEFAULT 0 COMMENT '品牌ID',
+    PRIMARY KEY(id)
+);
+
+DROP TABLE IF EXISTS `brand`;
+CREATE TABLE IF NOT EXISTS `brand` (
+    `id` INT NOT NULL AUTO_INCREMENT COMMENT '汽车品牌',
+    `name` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '品牌名称',
+    `logo` VARCHAR(200) NOT NULL DEFAULT '' COMMENT 'LogoURL',
+    `rap_audio` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '说唱音频',
+    PRIMARY KEY(id)
+);
+
+DROP TABLE IF EXISTS `car_model`;
+CREATE TABLE IF NOT EXISTS `car_model` (
+    `id` INT NOT NULL AUTO_INCREMENT COMMENT '车型ID',
+    `brand_id` INT NOT NULL DEFAULT 0 COMMENT '品牌ID',
+    `model_pic` VARCHAR(200) NOT NULL DEFAULT '' COMMENT '车型图',
+    PRIMARY KEY(id)
+);
+
+INSERT INTO user(mobile, company, brand_id) VALUES(18514429019, '庆可科技有限公司', 1);
