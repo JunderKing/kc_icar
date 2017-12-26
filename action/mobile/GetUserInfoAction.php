@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__ . '/BaseAction.php';
+include_once __DIR__ . '/../BaseAction.php';
 
 class GetUserInfoAction extends BaseAction {
     public function doAction () {
